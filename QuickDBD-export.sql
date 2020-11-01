@@ -5,7 +5,7 @@
 CREATE TABLE "Employees" (
     "emp_no" INT   NOT NULL,
     "title_id" VARCHAR(255)   NOT NULL,
-    "brith_date" INT   NOT NULL,
+    "brith_date" DATE  NOT NULL,
     "first_name" VARCHAR(255)   NOT NULL,
     "last_name" VARCHAR(255)   NOT NULL,
     "sex" VARCHAR(255)   NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE "dept_emp" (
 );
 
 CREATE TABLE "Departments" (
-    "dept_no" INT   NOT NULL,
+    "dept_no" VARCHAR(255) NOT NULL,
     "dept_name" VARCHAR(255)   NOT NULL,
     CONSTRAINT "pk_Departments" PRIMARY KEY (
         "dept_no"
