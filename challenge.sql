@@ -114,14 +114,35 @@ WHERE first_name = 'Hercules' AND last_name like 'B%';
 
 --List all employees in the Sales department, including their employee number, last name, first name, and department name.
 
-
+Select 
+e.emp_no,
+e.last_name,
+e.first_name,
+de.emp_no
+from "Employees" as e
+join "dept_emp" as de
+on e.emp_no = de.emp_no
+join "Departments" as d
+on d.dept_no = de.dept_no
+where d.dept_name = 'Sales';
 
 --List all employees in the Sales and Development departments, 
 --including their employee number, last name, first name, and department name.
 
+Select 
+e.emp_no,
+e.last_name,
+e.first_name,
+de.emp_no
+from "Employees" as e
+join "dept_emp" as de
+on e.emp_no = de.emp_no
+join "Departments" as d
+on d.dept_no = de.dept_no
+where d.dept_name = 'Sales';
 
-
---In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+--In descending order, list the frequency count of employee last names, i.e.,
+--how many employees share each last name.
 
 
 
