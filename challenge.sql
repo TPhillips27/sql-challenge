@@ -85,15 +85,15 @@ WHERE DATE_PART('year',hire_date) = 1986
 --department number, department name, the manager's employee number, last name, first name.
 
 SELECT dm.dept_no, 
-dm.dept_name,
+d.dept_name,
 dm.emp_no,
 e.last_name, 
-e.first_name,
+e.first_name
 FROM "Dept_Manager" as dm
 JOIN "Departments" as d
-on dept_manager.dept_no = departments.dept_no
+on dm.dept_no = d.dept_no
 JOIN "Employees" as e
-on dept_manager.emp_no = employees.emp_no
+on dm.emp_no = e.emp_no
 ORDER BY emp_no;
 
 --List the department of each employee with the following information: 
@@ -105,7 +105,9 @@ e.first_name,
 d.dept_name
 from "Employees" as e
 join "Departments" as d
-on d.emp_no = e.emp_no;
+join "dept_emp" as de
+on d.dept_no = de.dept_no
+on de.emp_no = e.emp_no;
 
 --List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
 
@@ -139,10 +141,13 @@ join "dept_emp" as de
 on e.emp_no = de.emp_no
 join "Departments" as d
 on d.dept_no = de.dept_no
-where d.dept_name = 'Sales';
+where d.dept_name in ('Sales', 'Development');
 
 --In descending order, list the frequency count of employee last names, i.e.,
 --how many employees share each last name.
 
-
+SELECT last_name, COUNT (*) AS countOfnames
+FROM "Employees"
+GROUP BY last_name
+ORDER BY countOfnames DESC;
 
